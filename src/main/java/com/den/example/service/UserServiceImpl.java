@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService{
         return daoService.save(user);
     }
 
-    @Override
+    /*@Override
     public List<User> saveMultiple(List<User> list) {
         return daoService.saveMultiple(list);
     }
@@ -41,5 +41,5 @@ public class UserServiceImpl implements UserService{
     @Override
     public boolean deleteById(int id) {
         return daoService.deleteById(id);
-    }
+    }*/
 }

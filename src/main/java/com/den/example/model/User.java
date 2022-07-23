@@ -5,15 +5,13 @@ import lombok.*;
 /**
  * POJO класс пользователя
  */
-
-@Getter
-@Setter
-@NoArgsConstructor
+@Data
 @AllArgsConstructor
 public class User {
-    private Integer id;
+
     private String userName;
-    private int password;
-    private UserRole role = UserRole.USER;
+    private String password;
+//    private UserRole role = UserRole.user;
+    private String userRole;// разобраться с РОЛЯМИ!!!!!!!!!!!
 
 }

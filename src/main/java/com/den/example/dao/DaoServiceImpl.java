@@ -1,25 +1,31 @@
 package com.den.example.dao;
 
 import com.den.example.model.User;
+import lombok.AllArgsConstructor;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
+
 
 @Repository
+@AllArgsConstructor
 public class DaoServiceImpl implements DaoService<User> {
-    private static final Map<Integer, User> USERS = new HashMap<>();
 
-    private static final AtomicInteger USERS_ID_GENERATION = new AtomicInteger();
+    private JdbcTemplate jdbcTemplate;
 
     @Override
     public User save(User user) {
-        final int userId = USERS_ID_GENERATION.incrementAndGet();
-        user.setId(userId);
-        USERS.put(userId, user);
-        return USERS.get(userId);
-    }
+        List<Object[]> parameters = new ArrayList<Object[]>();
+        parameters.add(new Object[] {user.getUserName(),
+                    user.getPassword(), user.getUserRole()});
 
-    @Override
+        jdbcTemplate.batchUpdate("INSERT INTO users(username, password, role) VALUES(?,?,?)", parameters);
+
+        return user;
+    }
+}
+
+    /*@Override
     public List<User> saveMultiple(List<User> list) {
         List<User> arr = new ArrayList();
         for (User user : list) {
@@ -52,4 +58,4 @@ public class DaoServiceImpl implements DaoService<User> {
     public boolean deleteById(int id) {
         return USERS.remove(id) !=null;
     }
-}
+}*/
