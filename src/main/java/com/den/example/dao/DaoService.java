@@ -15,38 +15,37 @@ public interface DaoService<T> {
     T save(T element);
 
     /**
-     * Методо добавления нескольких элементов в БД
-     * @param list
-     */
-    /*   List<T> saveMultiple(List<T> list);
-
-     *//**
-     * Выбор элемента по ИД
+     * Удадение пользователя по ИД
      * @param id
      * @return
-     *//*
-    T selectById(int id);
+     */
+    int deleteById(int id);
 
-    *//**
-     * Выбор всех элементов
-     * @return
-     *//*
-    List<T> selectAll();
-
-    *//**
+    /**
      * Изменения данных элемента по ИД
      * @param element
      * @param id
      * @return
-     *//*
-    boolean update(T element, int id);
+     */
+    int update(T element, int id);
 
-    *//**
-     * Удадение пользователя по ИД
+    /**
+     * Методо добавления нескольких элементов в БД
+     * @param list
+     */
+    //List<T> saveMultiple(List<T> list);
+
+     /**
+     * Выбор элемента по ИД
      * @param id
      * @return
-     *//*
-    boolean deleteById(int id);
+     */
+    //T selectById(int id);
 
-}*/
+    /**
+     * Выбор всех элементов
+     * @return
+     */
+    //List<T> selectAll();
 }
+

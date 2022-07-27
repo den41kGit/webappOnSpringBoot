@@ -11,10 +11,13 @@ import java.util.List;
 public interface UserService {
 
     User save(User user);
+    int deleteById(int id);
+    int update(User element, int id);
     /*List<User> saveMultiple(List<User> list);
     User selectById(int id);
     List<User> selectAll();
-    boolean update(User element, int id);
-    boolean deleteById(int id);
-*/
+    */
+
+
+
 }

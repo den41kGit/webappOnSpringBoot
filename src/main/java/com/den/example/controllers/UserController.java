@@ -22,6 +22,28 @@ public class UserController {
         return userService.save(user);
     }
 
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<String> delete(@PathVariable(name = "id") int id) {
+
+        int result = userService.deleteById(id);
+
+        if (result ==1)
+            return new ResponseEntity<>("User with id = " + id + " - deleted", HttpStatus.OK);
+        else
+            return new ResponseEntity<>("User with id = " + id + " - not found", HttpStatus.NOT_FOUND);
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<String> update(@PathVariable(name = "id") int id,
+                                          @RequestBody User user) {
+        int result = userService.update(user, id);
+
+        if (result==1)
+            return new ResponseEntity<>("User with id = " + id + " - updated\n" + user, HttpStatus.OK);
+        else
+            return new ResponseEntity<>("User with id = " + id + " - not found", HttpStatus.NOT_FOUND);
+    }
+
    /* @PostMapping("/saveAll")
     @ResponseStatus(HttpStatus.CREATED)
     public List<User> saveMultiple(@RequestBody List<User> list){
@@ -47,25 +69,5 @@ public class UserController {
         else
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
-
-    @PutMapping(value = "/{id}")
-    public ResponseEntity<Integer> update(@PathVariable(name = "id") int id,
-                                          @RequestBody User user) {
-        final boolean updated = userService.update(user, id);
-
-        if (updated)
-            return new ResponseEntity<>(HttpStatus.OK);
-        else
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
-
-    @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Integer> delete(@PathVariable(name = "id") int id) {
-        final boolean deleted = userService.deleteById(id);
-
-        if (deleted)
-            return new ResponseEntity<>(HttpStatus.OK);
-        else
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }*/
+    */
 }

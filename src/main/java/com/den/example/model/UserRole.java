@@ -5,4 +5,5 @@ package com.den.example.model;
  */
 public enum UserRole {
     admin, moderator, user
+
 }

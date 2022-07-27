@@ -17,15 +17,27 @@ public class DaoServiceImpl implements DaoService<User> {
     public User save(User user) {
         List<Object[]> parameters = new ArrayList<Object[]>();
         parameters.add(new Object[] {user.getUserName(),
-                    user.getPassword(), user.getUserRole()});
+                    user.getPassword(),user.getUserRole()});
 
-        jdbcTemplate.batchUpdate("INSERT INTO users(username, password, role) VALUES(?,?,?)", parameters);
+        jdbcTemplate.batchUpdate("INSERT INTO users(username, password, role)" +
+                "VALUES(?,?,cast(? as role_state))", parameters);
 
         return user;
     }
-}
+    @Override
+    public int deleteById(int id) {
+        return jdbcTemplate.update("DELETE FROM users " +
+                "WHERE id = ?", id);
+    }
+    @Override
+    public int update(User user, int id) {
 
-    /*@Override
+        return jdbcTemplate.update("UPDATE users SET username = ?, password = ?, role = cast(? as role_state) " +
+                " WHERE id = ?", user.getUserName(),
+                user.getPassword(), user.getUserRole(), id);
+    }
+    /*
+    @Override
     public List<User> saveMultiple(List<User> list) {
         List<User> arr = new ArrayList();
         for (User user : list) {
@@ -43,19 +55,5 @@ public class DaoServiceImpl implements DaoService<User> {
     public List<User> selectAll() {
         return new ArrayList<>(USERS.values());
     }
-
-    @Override
-    public boolean update(User user, int id) {
-        if (USERS.containsKey(id)){
-            user.setId(id);
-            USERS.put(id, user);
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    public boolean deleteById(int id) {
-        return USERS.remove(id) !=null;
-    }
-}*/
+    */
+}
