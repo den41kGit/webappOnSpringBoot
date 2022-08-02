@@ -1,5 +1,7 @@
 package com.den.example.dao;
 
+import com.den.example.model.User;
+
 import java.util.List;
 
 /**
@@ -12,7 +14,7 @@ public interface DaoService<T> {
      *
      * @param element
      */
-    T save(T element);
+    Number save(T element);
 
     /**
      * Удадение пользователя по ИД
@@ -30,22 +32,16 @@ public interface DaoService<T> {
     int update(T element, int id);
 
     /**
-     * Методо добавления нескольких элементов в БД
-     * @param list
+     * Выбор всех элементов
+     * @return
      */
-    //List<T> saveMultiple(List<T> list);
+    List<User> selectAll();
 
      /**
      * Выбор элемента по ИД
      * @param id
      * @return
      */
-    //T selectById(int id);
-
-    /**
-     * Выбор всех элементов
-     * @return
-     */
-    //List<T> selectAll();
+    T selectById(int id);
 }
 
