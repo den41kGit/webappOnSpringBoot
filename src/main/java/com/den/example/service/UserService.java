@@ -15,4 +15,7 @@ public interface UserService {
     int update(User element, int id);
     List<User> selectAll();
     User selectById(int id);
+
+    boolean checkLengthName(User user);
+
 }

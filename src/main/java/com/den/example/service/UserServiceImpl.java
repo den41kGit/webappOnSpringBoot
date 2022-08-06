@@ -33,6 +33,12 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User selectById(int id) {
-        return (User) daoService.selectById(id);
+        return daoService.selectById(id);
+    }
+
+    @Override
+    public boolean checkLengthName(User user) {
+
+        return (user.getUserName().length() < 35);
     }
 }
