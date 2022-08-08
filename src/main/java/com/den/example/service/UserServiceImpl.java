@@ -14,7 +14,7 @@ public class UserServiceImpl implements UserService{
     private DaoService<User> daoService;
 
     @Override
-    public Number save(User user) {
+    public long save(User user) {
         return daoService.save(user);
     }
     @Override
@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public boolean checkLengthName(User user) {
+    public boolean isValidLengthName(User user) {
 
         return (user.getUserName().length() < 35);
     }

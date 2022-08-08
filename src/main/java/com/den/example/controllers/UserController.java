@@ -16,8 +16,8 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    public ResponseEntity<Number> save(@RequestBody User user){
-        if (userService.checkLengthName(user)){
+    public ResponseEntity<Long> save(@RequestBody User user){
+        if (userService.isValidLengthName(user)){
             return new ResponseEntity<>(userService.save(user), HttpStatus.CREATED);
         }
         else

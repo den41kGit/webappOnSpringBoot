@@ -6,6 +6,7 @@ import lombok.*;
  * POJO класс пользователя
  */
 @Data
+@AllArgsConstructor
 @RequiredArgsConstructor
 public class User {
     private Long id;
