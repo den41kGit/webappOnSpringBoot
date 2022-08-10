@@ -2,6 +2,7 @@ package com.den.example.dao;
 
 import com.den.example.model.User;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
