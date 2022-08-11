@@ -16,14 +16,16 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public Number save(@RequestBody User user){
-        return userService.save(user);
+    public ResponseEntity<Long> save(@RequestBody User user){
+        if (userService.isValidLengthName(user)){
+            return new ResponseEntity<>(userService.save(user), HttpStatus.CREATED);
+        }
+        else
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<ResponseStatus> delete(@PathVariable(name = "id") int id) {
-
         int result = userService.deleteById(id);
 
         if (result ==1)
@@ -34,7 +36,7 @@ public class UserController {
 
     @PutMapping(value = "/{id}")
     public ResponseEntity<ResponseStatus> update(@PathVariable(name = "id") int id,
-                                          @RequestBody User user) {
+                                                 @RequestBody User user) {
         int result = userService.update(user, id);
 
         if (result==1)

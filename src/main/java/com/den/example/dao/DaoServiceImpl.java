@@ -2,6 +2,7 @@ package com.den.example.dao;
 
 import com.den.example.model.User;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
@@ -18,7 +19,7 @@ public class DaoServiceImpl implements DaoService<User> {
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public Number save(User user) {
+    public long save(User user) {
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbcTemplate.update(connection -> {
@@ -30,7 +31,7 @@ public class DaoServiceImpl implements DaoService<User> {
                 ps.setString(3, user.getUserRole());
                 return ps;
         }, keyHolder);
-        return keyHolder.getKey();
+        return keyHolder.getKey().longValue();
     }
 
     @Override

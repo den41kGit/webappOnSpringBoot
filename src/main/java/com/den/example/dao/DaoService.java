@@ -14,7 +14,7 @@ public interface DaoService<T> {
      *
      * @param element
      */
-    Number save(T element);
+    long save(T element);
 
     /**
      * Удадение пользователя по ИД
