@@ -4,15 +4,16 @@ import com.den.example.dao.DaoService;
 import com.den.example.model.User;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@AllArgsConstructor
 @NoArgsConstructor
 public class UserServiceImpl implements UserService{
-
+    @Autowired
     private DaoService<User> daoService;
 
     @Override

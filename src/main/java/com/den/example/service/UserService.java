@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Сервис по работе с Пользователями
  */
-
+@Service
 public interface UserService {
 
     long save(User user);

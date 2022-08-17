@@ -8,6 +8,7 @@ import java.util.List;
  * Интерфейс имитация БД с дженериком
  * @param <T>
  */
+
 public interface DaoService<T> {
     /**
      * метод добавления элемента в БД
