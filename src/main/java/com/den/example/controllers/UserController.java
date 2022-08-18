@@ -2,6 +2,7 @@ package com.den.example.controllers;
 
 import com.den.example.model.User;
 import com.den.example.service.UserService;
+import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
