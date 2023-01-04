@@ -1,5 +1,6 @@
 package com.den.example.dao;
 
+import com.den.example.exception.UsersNotFoundException;
 import com.den.example.model.User;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -36,12 +37,18 @@ public class DaoServiceImpl implements DaoService<User> {
 
     @Override
     public int deleteById(int id) {
+        if(id <= 0){
+            throw new RuntimeException("Other type of exception");
+        }
         return jdbcTemplate.update("DELETE FROM users " +
                 "WHERE id = ?", id);
     }
 
     @Override
     public int update(User user, int id) {
+        if(id <= 0){
+            throw new RuntimeException("Other type of exception");
+        }
 
         return jdbcTemplate.update("UPDATE users SET username = ?, password = ?, role = cast(? as role_state) " +
                 " WHERE id = ?", user.getUserName(),
@@ -51,17 +58,24 @@ public class DaoServiceImpl implements DaoService<User> {
     @Override
     public List<User> selectAll() {
 
-        return jdbcTemplate.query("SELECT id, username, role FROM users", (rs, rowNum) -> new User(
+        List<User> listUsers =  jdbcTemplate.query("SELECT id, username, role FROM users", (rs, rowNum) -> new User(
                 rs.getLong("id"),
                 rs.getString("userName"),
                 rs.getString("role")
                 )
         );
+        if (listUsers.isEmpty()){
+            throw new UsersNotFoundException("Database is Empty");
+        }
+        return listUsers;
 
     }
 
     @Override
     public User selectById(int id) {
+        if(id <= 0){
+            throw new RuntimeException("Other type of exception");
+        }
         return jdbcTemplate.queryForObject("SELECT id, username, role FROM users WHERE id = ?",
                 new Object[]{id}, (rs, rowNum) ->
                 new User(
