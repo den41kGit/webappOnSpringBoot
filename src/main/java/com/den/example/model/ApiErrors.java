@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
+//TODO возможно тут можно было просто использовать @Data
 @Getter
 @Setter
 @NoArgsConstructor

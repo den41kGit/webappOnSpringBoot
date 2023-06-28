@@ -14,7 +14,7 @@ import java.util.List;
  */
 @Service
 public interface UserService {
-
+    //TODO неуверен что тут в сигнатуру надо писать эти ошибки, ведь они runtime, и в имплиментации их нет
     long save(User user) throws DateEnterIncorrectException;
     int deleteById(int id) throws IdNotFoundException;
     int update(User element, int id) throws IdNotFoundException;
