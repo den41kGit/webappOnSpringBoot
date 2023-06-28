@@ -3,6 +3,7 @@ package com.den.example.dao;
 import com.den.example.exception.UsersNotFoundException;
 import com.den.example.model.User;
 import lombok.AllArgsConstructor;
+//TODO неиспользуемый импорт
 import lombok.NoArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -16,7 +17,7 @@ import java.util.*;
 @Repository
 @AllArgsConstructor
 public class DaoServiceImpl implements DaoService<User> {
-
+    //TODO тут получается неявный инжект объекта Spring'ом? если да, то по-моему желательно делать явным через аннотацию @Autowired. в UserController тоже самое
     private JdbcTemplate jdbcTemplate;
 
     @Override

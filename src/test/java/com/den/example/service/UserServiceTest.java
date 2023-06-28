@@ -7,7 +7,8 @@ import org.junit.Test;
 public class UserServiceTest {
 
     private final UserService userService = new UserServiceImpl();
-    
+
+    //TODO ошибки в названиях Lenght, LEnght(length)
     @Test
     public void givenUserWithInvalidLenghtName_whenIsValidLEnghtName_thenResultIsFalse() {
 

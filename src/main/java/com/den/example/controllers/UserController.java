@@ -15,12 +15,11 @@ import java.util.List;
 public class UserController {
 
     private UserService userService;
-
     @PostMapping
     public ResponseEntity<Long> save(@RequestBody User user){
         if (userService.isValidLengthName(user)){
             return new ResponseEntity<>(userService.save(user), HttpStatus.CREATED);
-        }
+        } //TODO нет фигурных скобок
         else
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
@@ -29,7 +28,8 @@ public class UserController {
     public ResponseEntity<ResponseStatus> delete(@PathVariable(name = "id") int id) {
         int result = userService.deleteById(id);
 
-        if (result ==1)
+        if (result ==1)//TODO нет фигурных скобок
+            //TODO неправильный статус код тут нужен "NO_CONTENT"
             return new ResponseEntity<>(HttpStatus.OK);
         else
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -39,7 +39,7 @@ public class UserController {
     public ResponseEntity<ResponseStatus> update(@PathVariable(name = "id") int id,
                                                  @RequestBody User user) {
         int result = userService.update(user, id);
-
+        //TODO в целом по проекту code style, можно в идее нажимать CTRL+ALT+L и она сама будет редактировать
         if (result==1)
             return new ResponseEntity<>(HttpStatus.OK);
         else
